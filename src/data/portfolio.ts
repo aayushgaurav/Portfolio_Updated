@@ -27,11 +27,12 @@ export const focusAreas = [
 ];
 
 export const skillGroups = [
-  { title: "AI and Generative AI", items: ["Generative AI", "LLM API Integration", "Retrieval-Augmented Generation (RAG)", "BM25-Style Lexical Retrieval", "Prompt Engineering", "Google Gemini API", "Groq API", "Amazon Bedrock — Architecture Level Knowledge"] },
-  { title: "Workflow Automation", items: ["n8n", "Scheduled Workflows", "HTTP Request Nodes", "HTML Extraction", "JavaScript Code Nodes", "Data Normalization", "Deduplication", "Google Sheets Integration", "Web Data Extraction"] },
-  { title: "Programming and Development", items: ["Python", "Java", "JavaScript", "React", "HTML", "CSS", "FastAPI", "REST APIs", "Swagger/OpenAPI", "Postman"] },
-  { title: "Cloud and Infrastructure", items: ["AWS EC2", "Amazon S3", "AWS VPC", "AWS IAM", "AWS Lambda", "Amazon RDS", "Amazon DynamoDB", "Amazon CloudWatch", "AWS CloudTrail", "AWS CLI", "Linux Fundamentals", "Render", "Vercel"] },
-  { title: "Databases and Tools", items: ["SQLite", "MongoDB", "Git", "GitHub", "Maven"] },
+  { title: "AI and Generative AI (13)", items: ["Generative AI", "LLM API Integration", "Retrieval-Augmented Generation (RAG)", "BM25-Style Lexical Retrieval", "Prompt Engineering", "Google Gemini API", "Groq API", "Amazon Bedrock — Architecture Level Knowledge", "Local LLM Inference (Ollama)", "Semantic Retrieval", "Embeddings (Sentence Transformers)", "Vector Database (ChromaDB)", "Qwen 2.5 and Gemma 2 (via Ollama)"] },
+  { title: "Security Engineering (6)", items: ["JWT Authentication", "Argon2 Password Hashing", "Role-Based Access Control (RBAC)", "Audit Logging", "File Upload Validation", "Upload Rate Limiting"] },
+  { title: "Programming and Development (9)", items: ["Python", "Java", "JavaScript", "TypeScript", "React", "FastAPI", "REST APIs", "Swagger/OpenAPI", "Pytest"] },
+  { title: "Databases and Tools (6)", items: ["SQLite", "MongoDB", "ChromaDB", "Git", "GitHub", "Postman"] },
+  { title: "Cloud and Infrastructure (13)", items: ["AWS EC2", "Amazon S3", "AWS VPC", "AWS IAM", "AWS Lambda", "Amazon RDS", "Amazon DynamoDB", "Amazon CloudWatch", "AWS CloudTrail", "AWS CLI", "Linux Fundamentals", "Render", "Vercel"] },
+  { title: "Workflow Automation (8)", items: ["n8n", "Scheduled Workflows", "HTTP Request Nodes", "JavaScript Code Nodes", "Data Normalization", "Deduplication", "Google Sheets Integration", "Web Data Extraction"] },
 ];
 
 export type ProjectLink = { label: string; href: string; primary?: boolean };
@@ -48,6 +49,29 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    title: "AskIT — Private AI IT Support Assistant (Local-First RAG System)",
+    category: "Generative AI | RAG | Security",
+    status: "Local Build (cloud deployment in progress)",
+    description:
+      "A local-first RAG assistant that answers IT support questions from uploaded PDF, DOCX and TXT documents. It uses Sentence Transformers embeddings and ChromaDB for semantic retrieval and Ollama (Qwen 2.5 1.5B and Gemma 2 2B) for local inference. A FastAPI backend adds JWT authentication, Argon2 password hashing, role-based access control (admin and employee), document-level permissions, upload validation (file signatures, 10 MB limit, rate limiting) and audit logging. Includes a React, TypeScript and Vite frontend with an admin dashboard. Backed by 28 automated upload security tests (latest recorded result). Cloud deployment is a work in progress.",
+    stack: ["Python", "FastAPI", "React", "TypeScript", "Vite", "SQLite", "ChromaDB", "Sentence Transformers", "Ollama"],
+    features: [
+      "Semantic retrieval using Sentence Transformers embeddings and ChromaDB vector database.",
+      "Local LLM inference via Ollama with Qwen 2.5 1.5B and Gemma 2 2B models.",
+      "JWT authentication and Argon2 password hashing.",
+      "Role-based access control with admin and employee roles and document-level permissions.",
+      "File upload validation: file signature checks, 10 MB size limit, and rate limiting.",
+      "Audit logging for security-relevant events.",
+      "React, TypeScript and Vite frontend with an admin dashboard.",
+      "28 automated upload security tests (latest recorded result).",
+    ],
+    flow: ["User Question", "React Frontend", "FastAPI Backend", "JWT Auth & RBAC", "ChromaDB Retrieval", "Ollama LLM", "Generated Answer"],
+    note: "Cloud deployment is a work in progress. Currently runs fully locally.",
+    links: [
+      { label: "View Source Code", href: "https://github.com/aayushgaurav/private-it-support-assistant" },
+    ],
+  },
   {
     title: "AI Cyber Threat Intelligence Agent",
     category: "Generative AI | Cybersecurity | RAG",
